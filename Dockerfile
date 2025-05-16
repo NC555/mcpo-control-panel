@@ -35,10 +35,10 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Set Puppeteer environment variables
+# Set Puppeteer environment variables with the working configuration
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium \
-    PUPPETEER_ARGS="--no-sandbox,--disable-setuid-sandbox"
+    PUPPETEER_LAUNCH_OPTIONS={"headless":"new","args":["--no-sandbox","--disable-setuid-sandbox","--disable-dev-shm-usage","--disable-gpu","--no-zygote"]}
 
 # Install uv
 RUN pip install uv
@@ -63,5 +63,4 @@ ENV MCPO_MANAGER_HOST=0.0.0.0 \
 RUN mkdir -p /data
 
 # Command to run the application
-# The application will use the environment variables for host, port, and config directory
 CMD ["uv", "run", "python", "-m", "mcpo_control_panel", "--host", "0.0.0.0", "--port", "8083", "--config-dir", "/data"]
