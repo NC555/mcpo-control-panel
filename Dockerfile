@@ -38,7 +38,8 @@ RUN apt-get update && apt-get install -y \
 # Set Puppeteer environment variables with the working configuration
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium \
-    PUPPETEER_LAUNCH_OPTIONS={"headless":"new","args":["--no-sandbox","--disable-setuid-sandbox","--disable-dev-shm-usage","--disable-gpu","--no-zygote"]}
+    PUPPETEER_LAUNCH_OPTIONS={"headless":"new","args":["--no-sandbox","--disable-setuid-sandbox","--disable-dev-shm-usage","--disable-gpu","--no-zygote"]} \
+    PUPPETEER_ALLOW_DANGEROUS=true
 
 # Install uv
 RUN pip install uv
