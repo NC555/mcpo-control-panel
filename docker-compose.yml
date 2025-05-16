@@ -16,8 +16,10 @@ services:
     command: ["uv", "run", "python", "-m", "mcpo_control_panel", "--host", "0.0.0.0", "--port", "8083", "--config-dir", "/data"]
     networks:
       - coolify
-
+      - psswwcsw8sk8ws8s844os08o  
 
 networks:
   coolify:
+    external: true
+  psswwcsw8sk8ws8s844os08o:  
     external: true
