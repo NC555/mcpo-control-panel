@@ -12,14 +12,18 @@ services:
       MCPO_MANAGER_HOST: "0.0.0.0"
       MCPO_MANAGER_PORT: "8083"
       MCPO_MANAGER_DATA_DIR: "/data"
+      # Add Puppeteer environment variables
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true"
+      PUPPETEER_EXECUTABLE_PATH: "/usr/bin/chromium"
+      PUPPETEER_ARGS: "--no-sandbox,--disable-setuid-sandbox"
     restart: unless-stopped
     command: ["uv", "run", "python", "-m", "mcpo_control_panel", "--host", "0.0.0.0", "--port", "8083", "--config-dir", "/data"]
     networks:
       - coolify
-      - psswwcsw8sk8ws8s844os08o  
+      - psswwcsw8sk8ws8s844os08o
 
 networks:
   coolify:
     external: true
-  psswwcsw8sk8ws8s844os08o:  
+  psswwcsw8sk8ws8s844os08o:
     external: true
