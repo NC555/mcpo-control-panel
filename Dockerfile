@@ -10,12 +10,8 @@ RUN apt-get update && \
     && mkdir -p /etc/apt/keyrings \
     && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
     && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_22.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
-    && curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/googlechrome-linux-keyring.gpg \
-    && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/googlechrome-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list \
     && apt-get update \
-    && apt-get install -y \
-    nodejs \
-    google-chrome-stable \
+    && apt-get install -y nodejs \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -24,7 +20,8 @@ RUN pip install uv && uv venv
 
 # Install mcpo-control-panel and Playwright dependencies
 RUN uv pip install mcpo-control-panel && \
-    npx playwright install chrome && \
+    npm install -g @playwright/test && \
+    npx playwright install --force chrome && \
     npx playwright install-deps
 
 # Set working directory
