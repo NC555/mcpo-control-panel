@@ -2,7 +2,7 @@ services:
   mcpo-control-panel:
     build:
       context: .
-      dockerfile: DockerfileV1
+      dockerfile: Dockerfile
     networks:
       - coolify
     ports:
