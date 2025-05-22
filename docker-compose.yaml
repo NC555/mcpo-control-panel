@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    networks:
+      - coolify
     ports:
       - "8083:8083"
       - "8000:8000"
@@ -14,3 +16,7 @@ services:
       MCPO_MANAGER_DATA_DIR: "/data"
     restart: unless-stopped
     command: ["uv", "run", "python", "-m", "mcpo_control_panel", "--host", "0.0.0.0", "--port", "8083", "--config-dir", "/data"]
+
+networks:
+  coolify:
+    external: true
