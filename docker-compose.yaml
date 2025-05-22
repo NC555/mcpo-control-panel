@@ -9,7 +9,7 @@ services:
       - "8083:8083"
       - "8000:8000"
     volumes:
-      - /data/mcpo:/data
+      - /data:/data
     environment:
       MCPO_MANAGER_HOST: "0.0.0.0"
       MCPO_MANAGER_PORT: "8083"
