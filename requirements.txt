@@ -3,3 +3,4 @@ httpx>=0.28.1
 mcpo>=0.0.14
 sqlmodel>=0.0.24
 python-dotenv>=1.0.0
+echo-mcp-server-for-testing
